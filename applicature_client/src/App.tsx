@@ -1,3 +1,7 @@
+import { Home } from "./module/Home/Home.layout";
+import { LandingPage } from "./module/Home/LandingPage";
+import { Login } from "./module/Home/Login";
+import PrivateRoute from "./module/ProtectedRoute";
 import Dashboard from "./module/User/Dashboard";
 import {
   createBrowserRouter,
@@ -8,7 +12,25 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
+    element: <Home />,
+    children: [
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/app",
+    element: (
+      <PrivateRoute navigateTo="/login" condition={true}>
+        <Dashboard />
+      </PrivateRoute>
+    ),
   },
   {
     path: "*",

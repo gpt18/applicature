@@ -43,6 +43,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import brandLogo from "@/assets/brand-logo.svg";
+import { title } from "process";
 
 function Dashboard() {
   const [Applications, setApplications] = useState([]);
@@ -93,24 +94,11 @@ function Dashboard() {
                   Create New
                 </Button>
               }
-              DialogHeader={
-                <DialogHeader>
-                  <DialogTitle>New Application</DialogTitle>
-                  <DialogDescription>
-                    Add your new applied job application record here. Click save
-                    when you're done.
-                  </DialogDescription>
-                </DialogHeader>
-              }
-              DrawerHeader={
-                <DrawerHeader className="text-left">
-                  <DrawerTitle>New Application</DrawerTitle>
-                  <DrawerDescription>
-                    Add your new applied job application record here. Click save
-                    when you're done.
-                  </DrawerDescription>
-                </DrawerHeader>
-              }
+              header={{
+                title: "New Application",
+                description:
+                  "Add your new applied job application record here. Click save when you're done.",
+              }}
               Content={
                 <div className="md:max-w-[480px]">
                   <ScrollArea className="h-[500px] md:h-[400px] md:pr-4">
